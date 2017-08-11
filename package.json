@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/angelasubi/library-borrow#readme",
   "dependencies": {
-    "express": "^4.15.4"
+    "express": "^4.15.4",
+    "path": "^0.12.7"
   }
 }

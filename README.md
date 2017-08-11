@@ -5,8 +5,8 @@
 ## Build Setup
 
 ``` bash
-# install dependencies
+# 安装依赖
 npm install
 
-# serve with hot reload at localhost:3000
-npm run dev
+# 监听4000端口
+npm run app.js
