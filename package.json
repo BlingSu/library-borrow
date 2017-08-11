@@ -1,0 +1,22 @@
+{
+  "name": "library-borrow",
+  "version": "1.0.0",
+  "description": "基于express的图书借阅系统",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/angelasubi/library-borrow.git"
+  },
+  "author": "angelasubi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/angelasubi/library-borrow/issues"
+  },
+  "homepage": "https://github.com/angelasubi/library-borrow#readme",
+  "dependencies": {
+    "express": "^4.15.4"
+  }
+}
