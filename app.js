@@ -8,6 +8,6 @@ app.get('/', (req, res) => {
     res.send('成功搭起页面')
 })
 
-app.listen(3000, () => {
-    console.log('the server is running in 3000~~~')
+app.listen(4000, () => {
+    console.log('the server is running in 4000~~~')
 })
