@@ -9,6 +9,6 @@ app.get('/', (req, res) => {
     res.send('成功搭起页面')
 })
 
-app.listen(4000, () => {
-    console.log('the server is running in 4000~~~')
+app.listen(3333, () => {
+    console.log('the server is running in 3333~~~')
 })
