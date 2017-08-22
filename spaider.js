@@ -13,4 +13,9 @@ var Book = db.model('book', {
     publicsher: String
 })
 
-var spalider = new Crawler({})
+var spalider = new Crawler({
+    maxConnections: 10,
+    forceUTF8: true,
+    incomingEncoding: 'gb2312',
+    callback: function (err, res, $) {}
+})
