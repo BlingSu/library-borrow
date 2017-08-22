@@ -12,3 +12,5 @@ var Book = db.model('book', {
     author: String,
     publicsher: String
 })
+
+var spalider = new Crawler({})
