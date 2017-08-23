@@ -27,11 +27,15 @@ var spalider = new Crawler({
             book.author = $(item).find('.publisher_info a').eq(0).attr('title')
             book.publisher = $(item).find('.publisher_info a').last().text()
         })
-        book.save((err => {
-            if (err) { console.log(err) }
-                else { console.log('save is ok') }
+
+        book.save(err=>{
+            if(err){
+                console.log(err)
+            }else{
+                console.log('save is ok')
+            }
         })
-    }
+}
 })
 
 var i = 0;
