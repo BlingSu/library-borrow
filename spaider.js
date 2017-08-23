@@ -33,3 +33,12 @@ var spalider = new Crawler({
         })
     }
 })
+
+var i = 0;
+var arr = []
+
+for (i; i < 25; i++) {
+    arr[i] = 'http://bang.dangdang.com/books/newhotsales/1-'+(i+1);
+}
+console.log(arr)
+spalider.queue(arr)
