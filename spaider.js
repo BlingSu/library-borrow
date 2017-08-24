@@ -18,6 +18,7 @@ var spalider = new Crawler({
     forceUTF8: true,
     incomingEncoding: 'gb2312',
     callback: function (err, res, $) {
+        console.log($)
         $('.bang_list li').each(function (index, item) {
             var book = new Book()
             book.title = $(item).find('.name a').text()
