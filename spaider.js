@@ -5,7 +5,6 @@ db.connect('mongodb://localhost/books_db', { useMongoClient: true })
 
 var Book = db.model('book', {
     title: String,
-    description: String,
     img: String,
     link: String,
     price: String,
@@ -42,11 +41,12 @@ var spalider = new Crawler({
         }
 }
 })
+/*
+    var arr = []
 
-var arr = []
-
-for (let i = 0; i < 25; i++) {
-    arr[i] = 'http://bang.dangdang.com/books/newhotsales/1-'+(i+1);
-}
-console.log(arr)
-spalider.queue(arr)
+    for (let i = 0; i < 25; i++) {
+        arr[i] = 'http://bang.dangdang.com/books/newhotsales/1-'+(i+1);
+    }
+    console.log(arr)
+    spalider.queue(arr)
+*/
