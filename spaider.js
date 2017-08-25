@@ -16,12 +16,12 @@ var spalider = new Crawler({
     maxConnections: 10,
     forceUTF8: true,
     incomingEncoding: 'gb2312',
-    callback: function (err, res, $) {
-        if (err) {
-            console.log(err)
+    callback: function (error, res, done) {
+        if (error) {
+            console.log(error)
         } else {
-            let $ = res.$
-            let book = new Book()
+            var $ = res.$
+            var book = new Book()
             $('.bang_list li').each(function (index, item) {
                 book.title = $(item).find('.name a').text()
                 book.img = $(item).find('.pic a img').attr('src')
@@ -29,24 +29,23 @@ var spalider = new Crawler({
                 book.price = Number(($(item).find('.price p span').eq(0).text()).replace('¥', ''))
                 book.author = $(item).find('.publisher_info a').eq(0).attr('title')
                 book.publisher = $(item).find('.publisher_info a').last().text()
-            })
-
-            book.save(err=>{
-                if(err){
-                    console.log(err)
-                }else{
-                    console.log('save is ok')
-                }
+                book.save(err => {
+                    if (err) {
+                        console.log(err)
+                    } else {
+                        console.log('save is ok')
+                    }
+                })
+                done()
             })
         }
-}
-})
-/*
-    var arr = []
-
-    for (let i = 0; i < 25; i++) {
-        arr[i] = 'http://bang.dangdang.com/books/newhotsales/1-'+(i+1);
     }
-    console.log(arr)
+})
+
+var arr = []
+
+for (let i = 0; i < 25; i++) {
+    arr[i] = 'http://bang.dangdang.com/books/newhotsales/1-'+(i+1);
     spalider.queue(arr)
-*/
+}
+
