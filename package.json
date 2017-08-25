@@ -19,6 +19,8 @@
   "dependencies": {
     "crawler": "^1.0.5",
     "express": "^4.15.4",
+    "jQuery": "^1.7.4",
+    "jsdom": "^11.2.0",
     "mongoose": "^4.11.7",
     "path": "^0.12.7"
   }
