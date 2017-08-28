@@ -10,6 +10,7 @@ var app = express()
 var template = require('art-template')
 template.config('base', '')
 template.config('extname', '.html')
+
 app.engine('.html', template.__express)
 app.set('view engine', 'html')
 app.set('views', path.join(__dirname, 'views'))

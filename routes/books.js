@@ -11,5 +11,8 @@ router.get('/list', (req, res) => {
     })
 })
 
+router.get('/get_data/:page?', (req, res) => {
+    console.log(req)
+})
 
 module.exports = router

@@ -4,22 +4,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>test</title>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <title>图书馆</title>
 </head>
 <body>
-    <div id="test">
-        test html
-    </div>
+    <nav class="navbar navbar-inverse" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">图书借阅系统-书籍列表</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="/books/list">书籍列表</a></li>
+                    {{if isLogined}}
+                    <li><a href="/user/user_info">个人中心</a></li>
+                    {{/if}}
+                </ul>
+                {{if isLogined}}
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a onclick="logOut()" href="javascript:void(0)"><i class="glyphicon glyphicon-log-out"></i>[退出]</a>
+                    </li>
+                </ul>
+                {{else}}
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">用户中心 <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="/user/login">登陆</a></li>
+                            <li><a href="/user/reg">注册</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                {{/if}}
+            </div>
+        </div>
+    </nav>
     <script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
-
-    <script>
-        $.ajax({
-            method: 'get',
-            url: '/books/list',
-            dataType: 'json',
-            success: function (data) {
-                console.log(data)
-            }
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $.ajax({
+                method: 'get',
+                url: '/books/list',
+                dataType: 'json',
+                success: function (res) {
+                    console.log(res, 'res')
+                }
+            })
         })
     </script>
 </body>
