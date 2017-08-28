@@ -1,16 +1,16 @@
 var express = require('express')
-var path = require('path')
-
 var bodyParser = require('body-parser')
 var morgan = require('morgan')
 
 var app = express()
 
-app.use(express.static(path.join(__dirname, 'public')))
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 app.use(morgan('dev'))
 
+app.use(express.static('./www'))
+
+_globalPath = __dirname
 
 /* art-template */
 var template = require('art-template')
@@ -22,7 +22,7 @@ app.set('views', __dirname + '/views')
 
 
 app.get('/', (req, res) => {
-    res.send('成功搭起页面')
+    res.redirect('/list')
 })
 
 app.listen(6666, () => {
