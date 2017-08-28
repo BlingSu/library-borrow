@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/angelasubi/library-borrow#readme",
   "dependencies": {
+    "art-template": "^4.12.1",
     "body-parser": "^1.17.2",
     "crawler": "^1.0.5",
     "express": "^4.15.4",
