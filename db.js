@@ -2,12 +2,13 @@
 
 var express = require('express')
 var db = require('mongoose')
-db.connect('mongodb://localhost/books_db')
+db.connect('mongodb://localhost/books_db', {useMongoClient : true})
 
+db.Promise = Promise
 
 var Schema = db.Schema
 
-var blogSchema = new Schema({
+var bookSchema = new Schema({
     title: String,
     img: String,
     link: String,
@@ -16,8 +17,8 @@ var blogSchema = new Schema({
     publicsher: String
 })
 
-var Blog = db.model('Blog', blogSchema)
+var Book = db.model('Book', bookSchema)
 
 module.exports = {
-    Blog: Blog
+    Book: Book
 }

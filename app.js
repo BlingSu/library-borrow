@@ -13,18 +13,13 @@ app.use(express.static('./www'))
 _globalPath = __dirname
 
 /* art-template */
-var template = require('art-template')
-template.config('base', '')
-template.config('extname', '.html')
-app.engine('.html', template.__express)
-app.set('view engine', 'html')
-app.set('views', __dirname + '/views')
+const template = require('art-template')
 
 
-app.get('/', (req, res) => {
-    res.redirect('/list')
-})
+app.get('/', (req, res) => { res.redirect('api/list') })
 
-app.listen(6666, () => {
-    console.log('the server is running in 6666~~~')
+app.use('/api',require('./controllers/index'))
+
+app.listen(3333, () => {
+    console.log('the server is running in 3333~~~')
 })
