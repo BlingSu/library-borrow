@@ -8,5 +8,5 @@
 # 安装依赖
 npm install
 
-# 监听4000端口
+# 监听3333端口
 npm run app.js
