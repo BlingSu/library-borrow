@@ -44,14 +44,11 @@
     <script src="https://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script type="text/javascript">
         $(function () {
-            $.ajax({
-                method: 'get',
-                url: '/books/list',
-                dataType: 'json',
-                success: function (res) {
-                    console.log(res, 'res')
-                }
-            })
+            function loadData() {
+                $.ajax({
+
+                })
+            }
         })
     </script>
 </body>
