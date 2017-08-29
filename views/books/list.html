@@ -8,7 +8,7 @@
     <title>图书馆</title>
 </head>
 <body>
-    <!-- <nav class="navbar navbar-inverse" role="navigation">
+    <nav class="navbar navbar-inverse" role="navigation">
         <div class="container-fluid">
             <div class="navbar-header">
                 <a class="navbar-brand" href="#">图书借阅系统-书籍列表</a>
@@ -39,9 +39,9 @@
                 {{/if}}
             </div>
         </div>
-    </nav> -->
+    </nav>
     <div class="container">
-        <!-- <div class="row">
+        <div class="row">
             <div class="col-sm-12">
                 <div class="input-group">
                 <input type="text" id="txtKeyWord" class="form-control">
@@ -50,7 +50,7 @@
                 </span>
                 </div>
             </div>
-        </div> -->
+        </div>
         <div class="row">
             <div class="col-sm-12">
                 <div class="panel panel-default">
@@ -60,7 +60,7 @@
                     <div class="panel-body">
                         <div id="mainContainer" class="row">
                         </div>
-                        <!-- <button id="btnLoadMore" type="button" class="btn btn-block btn-danger">加载更多</button> -->
+                        <button id="btnLoadMore" type="button" class="btn btn-block btn-danger">加载更多</button>
                     </div>
                 </div>
             </div>
@@ -73,10 +73,17 @@
 
         $(function() {
             var _currentPage = 0 //当前页
-            var _searchKeyWord = ''
             loadData()
 
             $('#btnLoadMore').click(() => {
+                loadData()
+            })
+
+            var _searchKeyWord = ''
+            $('#btnSearch').click(() => {
+                _searchKeyWord = $('#txtKeyWord').val().trim()
+                $('#mainContainer').html('')
+                _currentPage = 0
                 loadData()
             })
 
@@ -108,8 +115,8 @@
                                     </div>
                                 </div>
                             </div>`
-                            $('#mainContainer').append(strHtml)
                         })
+                        $('#mainContainer').append(strHtml)
                     },
                     error: function (err) {
                         console.dir(err)
