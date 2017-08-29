@@ -7,16 +7,15 @@ var Book = db.Book
 router.get('/list', (req, res) => {
     Book.find({})
     .then((data) => {
-        res.render('books/list', {data:data})
+        res.render('books/list', {user:data})
     })
 })
 
 router.get('/get_data/:page?', (req, res) => {
-    console.log(req)
-    let currentPage = 1
-    let pageSize = 10
-    let keyWord = req.query.keyWord
-    let filter = {}
+    var currentPage = 1
+    var pageSize = 10
+    var keyWord = req.query.keyWord
+    var filter = {}
 
     if (keyWord) {
         filter = { title: new RegExp(keyWord, 'i') }
@@ -34,7 +33,6 @@ router.get('/get_data/:page?', (req, res) => {
      */
     Book.find(filter).limit(pageSize).skip((currentPage - 1) * pageSize).sort({id:-1})
         .then((resp) => {
-            console.log(data, '==========data')
             if (resp.length > 0) {
                 res.json({ status: 'y', data: resp, current_page: currentPage })
             } else {

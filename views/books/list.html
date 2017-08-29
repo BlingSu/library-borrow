@@ -8,7 +8,7 @@
     <title>图书馆</title>
 </head>
 <body>
-    <nav class="navbar navbar-inverse" role="navigation">
+    <!-- <nav class="navbar navbar-inverse" role="navigation">
         <div class="container-fluid">
             <div class="navbar-header">
                 <a class="navbar-brand" href="#">图书借阅系统-书籍列表</a>
@@ -39,22 +39,80 @@
                 {{/if}}
             </div>
         </div>
-    </nav>
+    </nav> -->
+    <div class="container">
+        <!-- <div class="row">
+            <div class="col-sm-12">
+                <div class="input-group">
+                <input type="text" id="txtKeyWord" class="form-control">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button" id="btnSearch"><span class="glyphicon glyphicon-search"></span></button>
+                </span>
+                </div>
+            </div>
+        </div> -->
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">图书列表</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div id="mainContainer" class="row">
+                        </div>
+                        <!-- <button id="btnLoadMore" type="button" class="btn btn-block btn-danger">加载更多</button> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
     <script src="https://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script type="text/javascript">
 
         $(function() {
             var _currentPage = 0 //当前页
+            var _searchKeyWord = ''
             loadData()
+
+            $('#btnLoadMore').click(() => {
+                loadData()
+            })
+
             function loadData() {
-            _currentPage += 1
-            $.ajax({
-                method: 'get',
-                url:'/books/get_data/'+_currentPage,
-                dataType: 'json',
-                success: function(data) {
-                    console.log(data)
+                _currentPage += 1
+                $.ajax({
+                    method: 'get',
+                    url:'/books/get_data/'+_currentPage,
+                    dataType: 'json',
+                    data:{keyWord:_searchKeyWord},//传递查询条件到服务器端
+                    success: function(data) {
+                        if (data.status === 'n') {
+                            alert(data.msg)
+                            return
+                        }
+                        console.log(data)
+                        let strHtml = ''
+                        data.data.forEach((item) => {
+                            strHtml += `<div class="book-item col-sm-3">
+                                <div class="thumbnail">
+                                    <img src="${item.img}" alt="${item.title}">
+                                    <div class="caption">
+                                        <h3>${item.title.length > 9 ? item.title.substring(0,8) + "..." : item.title}</h3>
+                                        <p>${item.author.length > 12 ? item.title.substring(0,11) + "..." : item.author}</p>
+                                        <p>￥${item.price}元</p>
+                                        <p>
+                                            <a href="javascript:void(0)" onclick="doPick('${item._id}')" class="btn btn-primary">借阅</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>`
+                            $('#mainContainer').append(strHtml)
+                        })
+                    }
+                    error: function (err) {
+                        console.dir(err)
                     }
                 })
             }
