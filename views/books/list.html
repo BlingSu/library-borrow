@@ -67,7 +67,7 @@
         </div>
     </div>
 
-    <script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+    <script src="/lib/jquery.js"></script>
     <script src="https://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script type="text/javascript">
 
@@ -107,7 +107,7 @@
                                     <img src="${item.img}" alt="${item.title}">
                                     <div class="caption">
                                         <h3>${item.title.length > 9 ? item.title.substring(0, 8) + "..." : item.title}</h3>
-                                        <p>${item.author.length>12 ? item.title.substring(0, 11) + "..." : item.author}</p>
+                                        <p>${item.author.length > 12 ? item.author.substring(0, 11) + "..." : item.author}</p>
                                         <p>￥${item.price}元</p>
                                         <p>
                                             <a href="javascript:void(0)" onclick="doPick('${item._id}')" class="btn btn-primary">借阅</a>
