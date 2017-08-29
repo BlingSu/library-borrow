@@ -24,6 +24,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', (req, res) => { res.redirect('/books/list') })
 
 app.use('/books/',require('./routes/books'))
+app.use('/user/',require('./routes/user'))
 
 
 app.listen(3333, () => {
