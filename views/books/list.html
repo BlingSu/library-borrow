@@ -43,10 +43,19 @@
     <script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
     <script src="https://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script type="text/javascript">
-        $(function () {
-            function loadData() {
-                $.ajax({
 
+        $(function() {
+            var _currentPage = 0 //当前页
+            loadData()
+            function loadData() {
+            _currentPage += 1
+            $.ajax({
+                method: 'get',
+                url:'/books/get_data/'+_currentPage,
+                dataType: 'json',
+                success: function(data) {
+                    console.log(data)
+                    }
                 })
             }
         })
