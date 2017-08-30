@@ -1,36 +1,36 @@
-$('#regDataForm').validate({
+$('#dataForm').validate({
     rules: {
         user_name: {
-            required: false,
+            required: true,
             minlength: 2
         },
         pwd:{
-            required: false,
+            required: true,
             minlength: 6
         },
         rePWD:{
-            required: false,
+            required: true,
             minlength: 6,
             equalTo:'#pwd'
         },
         name: {
-            required: false,
+            required: true,
             minlength: 2
         },
         email: {
-            email: false,
-            required: false,
+            email: true,
+            required: true,
         },
         birthday: {
-            required: false,
-            dateISO: false
+            required: true,
+            dateISO: true
         },
         mobile: {
-            isMobile: false,
-            required: false
+            isMobile: true,
+            required: true
         },
         address: {
-            required: false,
+            required: true,
         }
     },
     submitHandler: function(e) {
