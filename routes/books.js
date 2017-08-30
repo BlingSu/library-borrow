@@ -7,10 +7,14 @@ var StudentBook = db.StudentBook
 
 
 router.get('/list', (req, res) => {
-    Book.find({})
-    .then(data => {
-        res.render('books/list', { isLogined: true, user:data })
-    })
+    if (req.cookies.user_id) {
+        Book.find(req.cookies.id)
+        .then(data => {
+            res.render('books/list', { isLogined: true, user:data })
+        })
+    } else {
+        res.render('books/list', { isLogined: false })
+    }
 })
 
 router.get('/get_data/:page?', (req, res) => {
@@ -58,9 +62,9 @@ router.post('/pick', (req, res) => {
                 newBook.user_id = req.cookies.user_id,
                 newBook.book_id = req.body.id
                 newBook.save()
-                .then(res => {
-                    if (res) {
-                        console.log(res)
+                .then(data => {
+                    if (data) {
+                        console.log(data)
                     }
                     res.json({ status: 'y', message: '借书成功~~~' })
                 })

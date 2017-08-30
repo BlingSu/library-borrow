@@ -67,13 +67,13 @@ router.get('/login', (req, res) => {
 })
 
 router.post('/login', (req, res) => {
+    console.log(req.body.userName)
     Student.findOne({ user_name: req.body.userName })
-    .then(res => {
-        console.log(res , 'res')
-        if (res) {
-            if (res.pwd === req.body.userPWD) {
+    .then(data => {
+        if (data) {
+            if (data.pwd == req.body.userPWD) {
                 let timeSpan = new Date(Date.now() + 24 * 60 * 60 * 1000 * 10)
-                res.cookie('user_id', res.id, { path: '/', expires: timeSpan })
+                res.cookie('user_id', data.id, { path: '/', expires: timeSpan })
                 res.json({ status: 'y', message: '登录成功'})
             } else {
                 res.json({ status: 'n', message: '密码错误' })

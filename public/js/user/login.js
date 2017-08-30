@@ -15,12 +15,13 @@ $('#dataForm').validate({
             url: $(e).attr('action'),
             data: $(e).serialize(),
             success: function (res) {
+                console.log(res, '???')
                 if (res.status == 'y') {
-                    alert(res.msg);
+                    alert(res.message);
                     window.location.reload();
                 }
                 else{
-                    alert(res.msg);
+                    alert(res.message);
                 }
             }
         })
