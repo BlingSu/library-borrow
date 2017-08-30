@@ -1,4 +1,4 @@
-$('#dataForm').validate({
+$('#regDataForm').validate({
     rules: {
         user_name: {
             required: false,
@@ -34,7 +34,6 @@ $('#dataForm').validate({
         }
     },
     submitHandler: function(e) {
-        console.log(e, '==========e')
         $.ajax({
             method: 'post',
             url: $(e).attr('action'),

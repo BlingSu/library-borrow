@@ -39,7 +39,7 @@
                     </div>
                 </div>
                 <div class="panel-body">
-                    <form class="form-horizontal" id="dataForm" method="post" action="/user/reg/{{ data.id }}">
+                    <form class="form-horizontal" id="regDataForm" method="post" action="/user/reg/{{ data.id }}">
                         <div class="form-group">
                             <label class="col-sm-4 control-label">用户名</label>
                             <div class="col-sm-5">
@@ -120,15 +120,14 @@
     <script src="/js/user/reg.js"></script>
 
     <script>
-        $(function(){
-            $('input[name="gender"]').prop('checked',false)
-            {{if data.gender}}
-            $('input[name="gender"][value="{{data.gender}}"]').prop('checked',true)
-            {{else}}
-            $('input[name="gender"]').first().prop('checked',true)
-            {{/if}}
-
-        })
+        // $(function(){
+        //     $('input[name="gender"]').prop('checked',false)
+        //     {{if data.gender}}
+        //     $('input[name="gender"][value="{{data.gender}}"]').prop('checked',true)
+        //     {{else}}
+        //     $('input[name="gender"]').first().prop('checked',true)
+        //     {{/if}}
+        // })
     </script>
 </body>
 </html>
