@@ -44,4 +44,11 @@ router.get('/get_data/:page?', (req, res) => {
         })
 })
 
+
+router.post('/pick', (req, res) => {
+    if (req.cookies.user_id) {
+
+    }
+})
+
 module.exports = router

@@ -123,23 +123,23 @@
                     }
                 })
             }
-
-            function doPick(id) {
-                {{ if isLogined }}
-                $.ajax({
-                    method: 'post',
-                    data: {id: id},
-                    url: '/books/pick',
-                    success: function(res) {
-                        alert(res.message)
-                        console.log(res)
-                    }
-                })
-                {{ else }}
-                alert('请先登录')
-                {{ /if }}
-            }
         })
+
+        function doPick(id) {
+            {{ if isLogined }}
+            $.ajax({
+                method: 'post',
+                data: {id: id},
+                url: '/books/pick',
+                success: function(res) {
+                    alert(res.message)
+                    console.log(res)
+                }
+            })
+            {{ else }}
+            alert('请先登录')
+            {{ /if }}
+        }
     </script>
     <script src="/lib/jquery.cookie.min.js"></script>
     <script>
