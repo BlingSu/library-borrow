@@ -37,17 +37,17 @@ $('#dataForm').validate({
         console.log(e, '==========e')
         $.ajax({
             method: 'post',
-            url: $(ele).attr('action'),
-            data: $(ele).serialize(),
+            url: $(e).attr('action'),
+            data: $(e).serialize(),
             success: function (res) {
                 console.log(res)
-                // if (res.status == 'y') {
-                //     alert(res.msg)
-                //     window.location.href = '/user/user_info'
-                // }
-                // else {
-                //     alert(res.msg)
-                // }
+                if (res.status == 'y') {
+                    alert(res.message)
+                    window.location.href = '/user/user_info'
+                }
+                else {
+                    alert(res.message)
+                }
             }
         })
     }

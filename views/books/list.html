@@ -16,17 +16,17 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li><a href="/books/list">书籍列表</a></li>
-                    {{if isLogined}}
+                    {{ if isLogined }}
                     <li><a href="/user/user_info">个人中心</a></li>
-                    {{/if}}
+                    {{ /if }}
                 </ul>
-                {{if isLogined}}
+                {{ if isLogined }}
                 <ul class="nav navbar-nav navbar-right">
                     <li>
                         <a onclick="logOut()" href="javascript:void(0)"><i class="glyphicon glyphicon-log-out"></i>[退出]</a>
                     </li>
                 </ul>
-                {{else}}
+                {{ else }}
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">用户中心 <span class="caret"></span></a>
@@ -36,7 +36,7 @@
                         </ul>
                     </li>
                 </ul>
-                {{/if}}
+                {{ /if }}
             </div>
         </div>
     </nav>
@@ -123,7 +123,30 @@
                     }
                 })
             }
+
+            function doPick(id) {
+                {{ if isLogined }}
+                $.ajax({
+                    method: 'post',
+                    data: {id: id},
+                    url: '/books/pick',
+                    success: function(res) {
+                        alert(res.message)
+                        console.log(res)
+                    }
+                })
+                {{ else }}
+                alert('请先登录')
+                {{ /if }}
+            }
         })
+    </script>
+    <script src="/lib/jquery.cookie.min.js"></script>
+    <script>
+        function logOut(){
+            $.removeCookie('user_id',{path:'/'}); //清除cookie
+            window.location.href = '/user/login' //页面跳转
+        }
     </script>
 </body>
 </html>

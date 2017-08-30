@@ -6,8 +6,8 @@ const Book = db.Book
 
 router.get('/list', (req, res) => {
     Book.find({})
-    .then((data) => {
-        res.render('books/list', {user:data})
+    .then(data => {
+        res.render('books/list', { isLogined: true, user:data })
     })
 })
 
@@ -32,14 +32,14 @@ router.get('/get_data/:page?', (req, res) => {
         sort 1正-1反
      */
     Book.find(filter).limit(pageSize).skip((currentPage - 1) * pageSize).sort({id:-1})
-        .then((resp) => {
+        .then(resp => {
             if (resp.length > 0) {
                 res.json({ status: 'y', data: resp, current_page: currentPage })
             } else {
                 res.json({ status: 'n', msg: '没有更多数据' })
             }
         })
-        .catch((err) => {
+        .catch(err => {
             res.json({ status: 'n', data: [], msg: '获取数据失败' })
         })
 })
