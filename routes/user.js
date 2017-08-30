@@ -6,6 +6,7 @@ const express = require('express')
 const router = express.Router()
 const db = require('../db')
 const Student = db.Student
+const StudentBook = db.StudentBook
 
 router.get('/reg', (req, res) => {
     let student = new Student()
@@ -40,16 +41,20 @@ router.post('/reg/:id', (req, res) => {
 
 router.get('/user_info', (req, res) => {
     Student.findById(req.cookies.user_id)
-    .then(resp => {
-        if (resp) {
-            console.log(resp)
+    .then(data => {
+        if (data) {
+            console.log(data)
+            StudentBook.find({ user_id: req.cookies.user_id }).populate('books')
+            .then(resp => {
+                res.render('user/user_info', { user: data, books: resp })
+            })
         } else {
             res.redirect('/user/login')
         }
     })
     .catch(err => {
         console.log(err)
-        re.redirect('/user/login')
+        res.redirect('/user/login')
     })
 })
 

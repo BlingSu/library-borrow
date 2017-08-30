@@ -52,7 +52,6 @@
                                 {{/each}}
                             </tbody>
                         </table>
-
                     </div>
                 </div>
             </div>
@@ -61,5 +60,11 @@
     <script src="/lib/jquery-1.9.1.js"></script>
     <script src="/lib/bootstrap/js/bootstrap.min.js"></script>
     <script src="/lib/jquery.cookie.min.js"></script>
+    <script>
+        function logOut(){
+            $.removeCookie('user_id',{path:'/'}); //清除cookie
+            window.location.href = '/user/login' //页面跳转
+        }
+    </script>
 </body>
 </html>
