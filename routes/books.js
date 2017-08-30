@@ -2,6 +2,8 @@ const express = require('express')
 const router = express.Router()
 const db = require('../db')
 const Book = db.Book
+const Student = db.Student
+var StudentBook = db.StudentBook
 
 
 router.get('/list', (req, res) => {
@@ -47,7 +49,25 @@ router.get('/get_data/:page?', (req, res) => {
 
 router.post('/pick', (req, res) => {
     if (req.cookies.user_id) {
-
+        StudentBook.count({ user_id: req.cookies.user_id, book_id: req.body.id })
+        .then(count => {
+            if (count > 0) {
+                res.json({ status: 'n', message: '您已借了这本书' })
+            } else {
+                let newBook = new StudentBook()
+                newBook.user_id = req.cookies.user_id,
+                newBook.book_id = req.body.id
+                newBook.save()
+                .then(res => {
+                    if (res) {
+                        console.log(res)
+                    }
+                    res.json({ status: 'y', message: '借书成功~~~' })
+                })
+            }
+        })
+    } else {
+        res.json({ status: 'n', message: '请先登录!' })
     }
 })
 
