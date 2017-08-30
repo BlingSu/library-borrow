@@ -1,9 +1,9 @@
-var express = require('express')
-var bodyParser = require('body-parser')
-var path = require('path')
-var logger = require('morgan')
+const express = require('express')
+const bodyParser = require('body-parser')
+const path = require('path')
+const logger = require('morgan')
 
-var app = express()
+const app = express()
 
 
 /* art-template */

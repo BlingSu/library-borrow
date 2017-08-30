@@ -1,13 +1,13 @@
 /* 数据 */
 
-var express = require('express')
-var db = require('mongoose')
+const express = require('express')
+const db = require('mongoose')
 db.connect('mongodb://localhost/books_db', {useMongoClient : true})
 
 db.Promise = Promise
 
-var Schema = db.Schema
-var bookSchema = new Schema({
+const Schema = db.Schema
+const bookSchema = new Schema({
     title: String,
     img: String,
     link: String,
@@ -16,7 +16,7 @@ var bookSchema = new Schema({
     publicsher: String
 })
 
-var studentSchema = new Schema({
+const studentSchema = new Schema({
     name: String,
     gender: String,
     birthday: {
@@ -38,8 +38,8 @@ var studentSchema = new Schema({
     }
 })
 
-var Book = db.model('Book', bookSchema)
-var Student = db.model('student', studentSchema)
+const Book = db.model('Book', bookSchema)
+const Student = db.model('student', studentSchema)
 
 module.exports = {
     Book: Book,

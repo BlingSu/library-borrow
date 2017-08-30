@@ -1,7 +1,7 @@
-var express = require('express')
-var router = express.Router()
-var db = require('../db')
-var Book = db.Book
+const express = require('express')
+const router = express.Router()
+const db = require('../db')
+const Book = db.Book
 
 
 router.get('/list', (req, res) => {
@@ -12,10 +12,10 @@ router.get('/list', (req, res) => {
 })
 
 router.get('/get_data/:page?', (req, res) => {
-    var currentPage = 1
-    var pageSize = 10
-    var keyWord = req.query.keyWord
-    var filter = {}
+    let currentPage = 1
+    let pageSize = 10
+    let keyWord = req.query.keyWord
+    let filter = {}
 
     if (keyWord) {
         filter = { title: new RegExp(keyWord, 'i') }

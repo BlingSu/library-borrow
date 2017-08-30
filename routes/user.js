@@ -2,13 +2,16 @@
     登陆，注册
  */
 
-var express = require('express')
-var router = express.Router()
-var db = require('../db')
+const express = require('express')
+const router = express.Router()
+const db = require('../db')
+const Student = db.Student
 
 router.get('/reg', (req, res) => {
-    res.render('user/reg')
+    let student = new Student()
+    res.render('user/reg', { data: student })
 })
 
+router.post('/')
 
 module.exports = router
