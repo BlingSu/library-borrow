@@ -31,15 +31,90 @@
     </nav>
 
     <div class="container">
-        <form class="navbar-form navbar-left" role="search">
-          <div class="form-group">
-            <input type="text" class="form-control" placeholder="Search">
-          </div>
-          <button type="submit" class="btn btn-default">Submit</button>
-        </form>
+        <div class="row">
+            <div class="col-sm-10 col-sm-offset-1">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">用户注册</h3>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">用户名</label>
+                            <div class="col-sm-5">
+                                <input type="text" class="form-control" name="user_name" placeholder="请输入你的用户名" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">密码</label>
+                            <div class="col-sm-5">
+                                <input type="password" class="form-control" id="pwd" name="pwd" placeholder="请输入你的密码" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">确认密码</label>
+                            <div class="col-sm-5">
+                                <input type="password" class="form-control" name="rePWD" id="rePWD" placeholder="请再次输入你的密码" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">姓名</label>
+                            <div class="col-sm-5">
+                                <input type="text" class="form-control" name="name" placeholder="姓名" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">性别</label>
+                            <div class="col-sm-5">
+                                <label><input type="radio" checked name="gender" value="男">男</label>
+                                <label><input type="radio" name="gender" value="女">女</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">出生日期</label>
+                            <div class="col-sm-5">
+                                <input type="text" class="form-control" onClick="WdatePicker()" name="birthday" placeholder="请选择出生日期" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">手机号</label>
+                            <div class="col-sm-5">
+                                <input type="text" class="form-control" name="mobile" placeholder="请输入手机号" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">邮箱</label>
+                            <div class="col-sm-5">
+                                <input type="text" class="form-control" name="email" placeholder="请输入邮箱" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">地址</label>
+                            <div class="col-sm-5">
+                                <input type="text" class="form-control" name="address" placeholder="请输入住址信息" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-9 col-sm-offset-4">
+                                <button type="submit" class="btn btn-primary">注册</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script src="/lib/jquery.js"></script>
     <script src="https://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+
+    </script>
 </body>
 </html>
