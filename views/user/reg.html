@@ -5,7 +5,7 @@
     <title>用户注册</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
 </head>
 <body>
     <nav class="navbar navbar-inverse" role="navigation">
@@ -39,7 +39,7 @@
                     </div>
                 </div>
                 <div class="panel-body">
-                    <form class="form-horizontal">
+                    <form class="form-horizontal" id="dataForm" method="post" action="/user/reg/{{data.id}}">
                         <div class="form-group">
                             <label class="col-sm-4 control-label">用户名</label>
                             <div class="col-sm-5">
@@ -76,7 +76,7 @@
                         <div class="form-group">
                             <label class="col-sm-4 control-label">出生日期</label>
                             <div class="col-sm-5">
-                                <input type="text" class="form-control" onClick="WdatePicker()" name="birthday" placeholder="请选择出生日期" />
+                                <input type="text" class="form-control form_datetime" onClick="WdatePicker()" name="birthday" placeholder="请选择出生日期" />
                             </div>
                         </div>
 
@@ -111,10 +111,24 @@
         </div>
     </div>
 
-    <script src="/lib/jquery.js"></script>
-    <script src="https://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <script type="text/javascript">
+    <script src="/lib/jquery-1.9.1.js"></script>
+    <script src="/lib/jquery.validate.js"></script>
+    <script src="/lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/lib/messages_zh.js"></script>
+    <script src="/js/common.js"></script>
+    <script src="/lib/my97DatePicker/WdatePicker.js"></script>
+    <script src="/js/user/reg.js"></script>
 
+    <script>
+        $(function(){
+            $('input[name="gender"]').prop('checked',false)
+            {{if data.gender}}
+            $('input[name="gender"][value="{{data.gender}}"]').prop('checked',true)
+            {{else}}
+            $('input[name="gender"]').first().prop('checked',true)
+            {{/if}}
+
+        })
     </script>
 </body>
 </html>
