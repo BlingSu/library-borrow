@@ -54,8 +54,21 @@ const studentBookSchema = new Schema({
 })
 
 // 日期
-studentBookSchema.methods.getBookedDate = function () {
+studentBookSchema.methods.getBookedDate = function() {
     return (`${this.booked_date.getFullYear()}-${this.booked_date.getMonth() + 1}-${this.booked_date.getDate()}  ${this.booked_date.getHours()}:${this.booked_date.getMinutes()}`)
+}
+
+/*
+    通过methods,定义一个instance方法
+    在模型的实例上进行调用
+*/
+
+studentSchema.methods.getAge = function() {
+    return (new Date()).getFullYear() - this.birthday.getFullYear()
+}
+
+studentSchema.methods.getBirthday = function() {
+    return (`${this.birthday.getFullYear()}-${this.birthday.getMonth() + 1}-${this.birthday.getDate()}`)
 }
 
 const Book = db.model('books', bookSchema)

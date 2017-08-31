@@ -20,7 +20,7 @@ function getPages(currentPage, pageCount) {
     return pages
 }
 
-router.get('/list/:page', (req, res) => {
+router.get('/list/:page?', (req, res) => {
     let currentPage = 1
     if (req.params.page) {
         currentPage = req.params.page * 1
@@ -40,11 +40,12 @@ router.get('/list/:page', (req, res) => {
     countStudent.then(count => {
         console.log(count, '总记录数目')
         pageCount = Math.ceil(count / pageSize) // 总页数
-        let page = getPages(currentPage, pageCount)
+        let pages = getPages(currentPage, pageCount)
         let findStudent = Student.find(filter)
             .limit(pageSize)
             .skip((currentPage -1) * pageSize)
             findStudent.then(data => {
+                console.log(data, 'data')
                 res.render('admin/student/list', { data: data, page: currentPage, pageCount: pageCount, pages: pages, query: req.query })
             })
             findStudent.catch(err => {

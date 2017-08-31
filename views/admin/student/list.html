@@ -17,7 +17,50 @@
                     </div>
                 </div>
                 <div class="pane-body">
-                    1
+                    <a class="btn btn-danger pull-right" role="button">新增</a>
+                    <form action="/admin/student/list" method="GET" class="form-inline" role="form">
+                        <div class="form-group">
+                            <input type="text" name="name" class="form-control" placeholder="请输入姓名">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="mobile" class="form-control" placeholder="请输入手机号">
+                        </div>
+                        <button type="submit" class="btn btn-primary">查询</button>
+                    </form>
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>序号</th>
+                                <th>姓名</th>
+                                <th>性别</th>
+                                <th>年龄</th>
+                                <th>出生日期</th>
+                                <th>手机号</th>
+                                <th>邮箱</th>
+                                <th>地址</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{ each data }}
+                            <tr>
+                                <td>{{ $index + 1 }}</td>
+                                <td>{{ $value.name }}</td>
+                                <td>{{ $value.gender }}</td>
+                                <td>{{ $value.getAge() }}</td>
+                                <td>{{ $value.getBirthday() }}</td>
+                                <td>{{ $value.mobile }}</td>
+                                <td>{{ $value.email }}</td>
+                                <td>{{ $value.address }}</td>
+                                <td>
+                                    <a href="">修改</a>
+                                    <a href="">删除</a>
+                                    <a href="">借阅信息</a>
+                                </td>
+                            </tr>
+                            {{ /each }}
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
