@@ -1,1 +1,54 @@
-<!-- 借阅信息 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{user.name}}的图书借阅信息</title>
+    <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-10 col-sm-offset-1">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">{{user.name}}图书借阅信息</h3>
+                    </div>
+                    <div class="panel-body">
+                        <p class="bg-warning user-info">
+                            姓名:{{user.name}}<br/>
+                            用户名:{{user.user_name}}</br>
+                            手机号:{{user.mobile}}</br>
+                            email:{{user.email}}
+                        </p>
+                        <table class="table table-bordered table-hover table-striped">
+                            <thead>
+                                <tr>
+                                    <th>序号</th>
+                                    <th>书名</th>
+                                    <th>作者</th>
+                                    <th>订阅时间</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{each books}}
+                                <tr>
+                                    <td>{{$index + 1}}</td>
+                                    <td>{{$value.book_id.title}}</td>
+                                    <td>{{$value.book_id.author}}</td>
+                                    <td>{{$value.getBookedDate()}}</td>
+                                </tr>
+                                {{/each}}
+                            </tbody>
+                        </table>
+                        <a href="javascript:history.go(-1)" class="btn btn-danger btn-block">返回</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/lib/jquery-1.9.1.js"></script>
+    <script src="/lib/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>
