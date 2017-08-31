@@ -102,4 +102,18 @@ rouetr.post('/delete', (req, res) => {
     })
 })
 
+/*
+    借阅信息
+*/
+
+router.get('/books/:id', (req, res) => {
+    student.findById(req.params.id)
+    .then(student => {
+        StudentBook.find({ user_id: req.params.id }).populate('book_id')
+        .then(books => {
+            res.render('admin/student/books', {user: student, books: books })
+        })
+    })
+})
+
 module.exports = router
