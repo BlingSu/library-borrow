@@ -59,4 +59,21 @@ router.get('/list/:page?', (req, res) => {
     })
 })
 
+router.get('/add/:id?', (req, res) => {
+    if (req.params.id) {
+        student.findById(req.params.id, (err, data) => {
+            let student
+            if (err) {
+                student = new Student()
+            } else {
+                student = data
+            }
+            res.render('admin/student/add', { data: student })
+        })
+    } else {
+        var student = new Student()
+        res.render('admin/student/add', { data: student })
+    }
+})
+
 module.exports = router
