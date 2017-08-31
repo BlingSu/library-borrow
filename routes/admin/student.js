@@ -79,7 +79,7 @@ router.get('/add/:id?', (req, res) => {
 router.post('/add/:id', (req, res) => {
     let student = new Student(req.body)
     /* 新增数据，若存在则修改 */
-    student.findByIdAndUpdate(req.params.id, req.body, {upsert: true}, (err, data) => {
+    Student.findByIdAndUpdate(req.params.id, req.body, {upsert: true}, (err, data) => {
         if (err) {
             console.dir(err)
             res.json({ status: 'n', message: '保存失败' })
@@ -93,7 +93,7 @@ router.post('/add/:id', (req, res) => {
     根据id 删除数据
 */
 router.post('/delete', (req, res) => {
-    student.findByIdAndRemove(req.params.id, (err, data) => {
+    Student.findByIdAndRemove(req.params.id, (err, data) => {
         if (err) {
             console.log(err)
         } else {
@@ -107,7 +107,7 @@ router.post('/delete', (req, res) => {
 */
 
 router.get('/books/:id', (req, res) => {
-    student.findById(req.params.id)
+    Student.findById(req.params.id)
     .then(student => {
         StudentBook.find({ user_id: req.params.id }).populate('book_id')
         .then(books => {

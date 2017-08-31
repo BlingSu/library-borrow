@@ -6,6 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>学生信息列表</title>
     <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
+    <style>
+        .pagination {
+            float: right;
+        }
+        .clear {
+            clear: both;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -69,16 +77,17 @@
                         {{ if page == 1 }}
                         <li class="disabled"><a>上一页</a></li>
                         {{ else }}
-                        <li><a href="/admin/student/list/{{ page -1 }}">上一页</a></li>
-                        {{ /if each page }}
-                        <li class="{{ $value == page ? active : '' }}"><a href="/admin/student/list/{{ $value }}">{{ $value }}</a></li>
+                        <li><a href="/admin/student/list/{{ page - 1}}">上一页</a></li>
+                        {{ /if }} {{ each pages }}
+                        <li class="{{$value==page?'active':''}}"><a href="/admin/student/list/{{$value}}">{{ $value }}</a></li>
                         {{ /each }} {{ if page >= pageCount }}
-                        <li class="disabled"><a>下一页</a></li>
+                        <li class="disabled"><a href="#">下一页</a></li>
                         {{ else }}
-                        <li><a href="/admin/student/page/{{ page + 1}}">下一页</a></li>
+                        <li><a href="/admin/student/list/{{ page + 1 }}">下一页</a></li>
                         {{ /if }}
-                        <li><a href="/admin/student/page/{{ pageCount }}"></a>尾页</li>
+                        <li><a href="/admin/student/list/{{ pageCount }}">尾页</a></li>
                     </ul>
+                    <div class="clear"></div>
                 </div>
             </div>
         </div>
@@ -99,10 +108,10 @@
 
         // 带查询条件分页
         $('pagination a').each(() => {
-            var temp = $(this.).attr('href')
+            var temp = $(this).attr('href')
             if (temp != '#' && temp != '') {
                 temp += window.location.search
-                $(this.).attr('href', temp)
+                $(this).attr('href', temp)
             }
         })
     </script>
