@@ -5,6 +5,8 @@
 ## Build Setup
 
 ``` bash
+# 连接数据库
+
 # 安装依赖
 npm install
 
