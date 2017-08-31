@@ -63,6 +63,22 @@
                             {{ /each }}
                         </tbody>
                     </table>
+                    <!-- 分页 -->
+                    <ul class="pagination">
+                        <li><a href="/admin/student/list/1">首页</a></li>
+                        {{ if page == 1 }}
+                        <li class="disabled"><a>上一页</a></li>
+                        {{ else }}
+                        <li><a href="/admin/student/list/{{ page -1 }}">上一页</a></li>
+                        {{ /if each page }}
+                        <li class="{{ $value == page ? active : '' }}"><a href="/admin/student/list/{{ $value }}">{{ $value }}</a></li>
+                        {{ /each }} {{ if page >= pageCount }}
+                        <li class="disabled"><a>下一页</a></li>
+                        {{ else }}
+                        <li><a href="/admin/student/page/{{ page + 1}}">下一页</a></li>
+                        {{ /if }}
+                        <li><a href="/admin/student/page/{{ pageCount }}"></a>尾页</li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -80,6 +96,15 @@
                 $('#formDel').submit()
             }
         }
+
+        // 带查询条件分页
+        $('pagination a').each(() => {
+            var temp = $(this.).attr('href')
+            if (temp != '#' && temp != '') {
+                temp += window.location.search
+                $(this.).attr('href', temp)
+            }
+        })
     </script>
 </body>
 </html>
