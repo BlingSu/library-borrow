@@ -38,6 +38,10 @@ const studentSchema = new Schema({
     }
 })
 
+/*
+    ref的时候需要指定模型的名字即 db.model()中参数一的值
+    mongoose通过population实现集合数据的关联
+*/
 const studentBookSchema = new Schema({
     booked_date: {
         type: Date,

@@ -22,6 +22,25 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 app.use(express.static(path.join(__dirname, 'public')));
 
+/* 模糊匹配 */
+app.all('/admin/*',(req,res,next)=>{
+    var path = req.path
+    console.log(path)
+    //如果当前访问的是管理后台的登陆页面,那么不需要判断是否登陆
+    if( path == '/admin/login' ){
+        next()
+    }
+    else {
+        // 如果cookies中存在管理员信息
+        console.log(req.cookies)
+        if (req.cookies.admin_user_name) {
+            next()
+        }
+        else {
+            res.redirect('/admin/login')
+        }
+    }
+})
 
 app.get('/', (req, res) => { res.redirect('/books/list') })
 
