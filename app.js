@@ -29,6 +29,8 @@ app.use('/books/',require('./routes/books'))
 app.use('/user/',require('./routes/user'))
 
 app.use('/admin/login/',require('./routes/admin/admin_user'))
+app.use('/admin/student/', require('./routes/admin/student'))
+
 
 app.listen(3333, () => {
     console.log('the server is running in 3333~~~')
