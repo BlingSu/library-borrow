@@ -89,4 +89,17 @@ router.post('/add/:id', (req, res) => {
     })
 })
 
+/*
+    根据id 删除数据
+*/
+rouetr.post('/delete', (req, res) => {
+    student.findByIdAndRemove(req.params.id, (err, data) => {
+        if (err) {
+            console.log(err)
+        } else {
+            res.redirect('/admin/student/list')
+        }
+    })
+})
+
 module.exports = router
