@@ -76,4 +76,17 @@ router.get('/add/:id?', (req, res) => {
     }
 })
 
+router.post('/add/:id', (req, res) => {
+    let student = new Student(req.body)
+    /* 新增数据，若存在则修改 */
+    student.findByIdAndUpdate(req.params.id, req.body, {upsert: true}, (err, data) => {
+        if (err) {
+            console.dir(err)
+            res.json({ status: 'n', message: '保存失败' })
+        } else {
+            res.json({ status: 'y', message: '保存成功' })
+        }
+    })
+})
+
 module.exports = router
