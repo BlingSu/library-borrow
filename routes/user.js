@@ -44,8 +44,9 @@ router.get('/user_info', (req, res) => {
     .then(data => {
         if (data) {
             console.log(data)
-            StudentBook.find({ user_id: req.cookies.user_id }).populate('books')
+            StudentBook.find({ user_id: req.cookies.user_id }).populate('book_id')
             .then(resp => {
+                console.log(resp)
                 res.render('user/user_info', { user: data, books: resp })
             })
         } else {
@@ -61,7 +62,7 @@ router.get('/user_info', (req, res) => {
 router.get('/login', (req, res) => {
     Student.findById(req.cookies.user_id)
     .then(data => {
-        console.log(data)
+        // console.log(data)
         if (data) {
             res.redirect('/user/user_info')
         }

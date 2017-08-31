@@ -6,7 +6,59 @@
     <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
 </head>
 <body>
-    111212
+    <nav class="navbar navbar-inverse" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">学生图书借阅系统</a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="/books/list">书籍列表</a></li>
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a onclick="logOut()" href="javascript:void(0)"><i class="glyphicon glyphicon-log-out"></i>[退出]</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+        <div class="container">
+        <div class="row">
+            <div class="col-sm-10 col-sm-offset-1">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">{{ user.name }}-个人图书借阅信息</h3>
+                    </div>
+                    <div class="panel-body">
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>序号</th>
+                                    <th>书名</th>
+                                    <th>作者</th>
+                                    <th>订阅时间</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{each books}}
+                                <tr>
+                                    <td>{{ $index + 1 }}</td>
+                                    <td>{{ $value.book_id.title }}</td>
+                                    <td>{{ $value.book_id.author }}</td>
+                                    <td>{{ $value.getBookedDate() }}</td>
+                                </tr>
+                                {{/each}}
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <script src="/lib/jquery-1.9.1.js"></script>
     <script src="/lib/bootstrap/js/bootstrap.min.js"></script>
     <script src="/lib/jquery.cookie.min.js"></script>
