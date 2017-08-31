@@ -61,7 +61,7 @@ router.get('/list/:page?', (req, res) => {
 
 router.get('/add/:id?', (req, res) => {
     if (req.params.id) {
-        student.findById(req.params.id, (err, data) => {
+        Student.findById(req.params.id, (err, data) => {
             let student
             if (err) {
                 student = new Student()
