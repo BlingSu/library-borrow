@@ -22,6 +22,7 @@ function getPages(currentPage, pageCount) {
 
 router.get('/list/:page?', (req, res) => {
     let currentPage = 1
+
     if (req.params.page) {
         currentPage = req.params.page * 1
     }
@@ -31,21 +32,19 @@ router.get('/list/:page?', (req, res) => {
 
     let filter = {}
 
-    if (req.params.name) { filter.name = new RegExp(req.params.name, 'i') }
+    if (req.query.name) { filter.name = new RegExp(req.query.name, 'i') }
 
-    if (req.params.mobile) { filter.name = new RegExp(req.params.mobile, 'i') }
+    if (req.query.mobile) { filter.name = new RegExp(req.query.mobile, 'i') }
 
     /* 数量 */
     let countStudent = Student.count(filter)
     countStudent.then(count => {
-        console.log(count, '总记录数目')
         pageCount = Math.ceil(count / pageSize) // 总页数
         let pages = getPages(currentPage, pageCount)
         let findStudent = Student.find(filter)
             .limit(pageSize)
             .skip((currentPage -1) * pageSize)
             findStudent.then(data => {
-                console.log(data, 'data')
                 res.render('admin/student/list', { data: data, page: currentPage, pageCount: pageCount, pages: pages, query: req.query })
             })
             findStudent.catch(err => {
@@ -93,7 +92,7 @@ router.post('/add/:id', (req, res) => {
     根据id 删除数据
 */
 router.post('/delete', (req, res) => {
-    Student.findByIdAndRemove(req.params.id, (err, data) => {
+    Student.findByIdAndRemove(req.body.id, (err, data) => {
         if (err) {
             console.log(err)
         } else {
