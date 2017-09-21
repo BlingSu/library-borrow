@@ -1,14 +1,23 @@
 # library
 
-> 基于nodejs bootstrap mongodb 的图书借阅系统
+> The knowledge used
+
+>** NodeJs **
+>** MongoDB,mongoose **
+>** bootstrap **
+>** art-template **
+>** crawler **
+>** jquery-ajax **
+>** jquery-validate **
+>** My97DatePicker **
 
 ## Build Setup
 
 ``` bash
-# 连接数据库
+# connect mongodb
 
-# 安装依赖
+# install devDependencies
 npm install
 
-# 监听3333端口
+# listen 3333 port
 npm run app.js
