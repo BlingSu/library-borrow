@@ -11,7 +11,6 @@ crawler
 jquery-ajax
 jquery-validate
 My97DatePicker
-
 ```
 ## Build Setup
 
