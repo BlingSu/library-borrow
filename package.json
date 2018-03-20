@@ -20,7 +20,6 @@
     "art-template": "^3.0.3",
     "body-parser": "^1.17.2",
     "cookie-parser": "^1.4.3",
-    "crawler": "^0.4.3",
     "express": "^4.15.4",
     "jQuery": "^1.7.4",
     "jsdom": "^11.2.0",
