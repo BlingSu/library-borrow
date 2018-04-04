@@ -34,7 +34,7 @@ router.get('/list/:page?', (req, res) => {
 
     if (req.query.name) { filter.name = new RegExp(req.query.name, 'i') }
 
-    if (req.query.mobile) { filter.name = new RegExp(req.query.mobile, 'i') }
+    if (req.query.mobile) { filter.mobile = new RegExp(req.query.mobile, 'i') }
 
     /* 数量 */
     let countStudent = Student.count(filter)
