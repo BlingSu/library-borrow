@@ -8,7 +8,7 @@
 
 > [vue版本](https://github.com/angelasubi/vue-library)  
 
-> [react版本](https://github.com/angelasubi/react-library)
+<!-- > [react版本](https://github.com/angelasubi/react-library) -->
 
 ### 使用说明
 
